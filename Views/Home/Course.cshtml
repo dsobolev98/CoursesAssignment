@@ -1,0 +1,37 @@
+﻿@model IEnumerable<CoursesAssignment.Models.Slide>
+
+@{
+    ViewBag.Title = "Create Course";
+
+}
+
+<div class="container" style="margin-top: 2rem;">
+    <p>Please refer to the slides below and input them in your order by a comma seperated list</p>
+    <form action="courseForm" method="post">
+        <div class="form-group">
+            <label for="courseTitle">Course Numbers:</label>
+            <input class="form-control" id="courseTitle" name="txtSlides" placeholder="1, 2, 3">
+        </div>
+        <button type="submit" class="btn btn-success">Add</button>
+    </form>
+</div>
+
+<div class="container bg-success text-white" @ViewBag.MessageSuccess style="margin-top: 2rem;">
+    <p>Your course was added to the DB with id @ViewBag.Id</p>
+</div>
+
+<div class="container bg-danger text-white" @ViewBag.MessageFail style="margin-top: 2rem;">
+    <p>Error, Please try again!</p>
+</div>
+
+<div class="container" style="margin-top: 2rem;">
+    <div class="col">
+        @foreach (var slide in Model)
+        {
+            <div class="row">
+                <div class="col-md-2">@slide.Id</div>
+                <div class="col-md-4">@slide.Text</div>
+            </div>
+        }
+    </div>
+</div>

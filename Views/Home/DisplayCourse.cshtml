@@ -1,0 +1,21 @@
+﻿@model CoursesAssignment.Models.Course
+
+@{ 
+    ViewBag.Title = "Course Info";
+}
+
+<div class="container" style="margin-top: 2rem;">
+    <p class="text-center">You are viewing course @Model.Id</p>
+
+    <div class="row" style="margin-top: 1.5rem;">
+        <div class="jumbotron text-center"><h3>@Model.Slides[ViewBag.index].Text</h3></div>
+    </div>
+    <div class="row text-center">
+        <button class="btn btn-sm btn-success text-white">
+                @Html.ActionLink("Next", "DisplayCourse", "Home", new { courseid = Model.Id, index = ViewBag.index + 1 }, null)
+        </button>
+    </div>
+    <div>
+        <p class="bg-danger" style="margin-top: 2rem;" @ViewBag.warningMessage>You are at the last slide</p>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+﻿@model IEnumerable<CoursesAssignment.Models.Course>
+
+@{
+    ViewBag.Title = "Home";
+}
+
+<div class="container" style="margin-top: 1.5rem;">
+    <div class="jumbotron">
+        <h1>Welcome to the available courses!</h1>
+        <p>Please click on any of the available courses frome the list below</p>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Course ID</th>
+                <th>Slide Deck</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model) 
+            {
+                <tr>
+                    <td>@Html.ActionLink(item.Id.ToString(),"DisplayCourse","Home", new { courseid = item.Id }, null)</td>
+                    <td>
+                    @foreach (var slide in item.Slides)
+                    {
+                        <span>@slide.Id</span>;
+                    }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
