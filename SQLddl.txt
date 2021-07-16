@@ -1,0 +1,14 @@
+CREATE DATABASE LinearFT;
+
+CREATE SCHEMA course;
+
+CREATE TABLE course.slide(
+	id INT PRIMARY KEY,
+	slideText TEXT
+)
+ 
+CREATE TABLE course.courses(
+	id INT NOT NULL,
+	slideId INT NOT NULL,
+	FOREIGN KEY (slideId) references course.slide (id)
+)
